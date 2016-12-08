@@ -1,13 +1,12 @@
 {
   "name": "nomie_bot",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Telegram bot to interact with nomie.",
   "author": "Julkku",
   "engines": {
     "node": "4.6.0"
   },
   "dependencies": {
-    "telegram-api-bot": "*",
     "dotenv": "*" ,
     "node-cron": "*",
     "node-telegram-bot-api": "*"
