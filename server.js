@@ -37,28 +37,6 @@ bot.onText(/\/mood/, function (msg, match) {
     queryMood(msg.chat);
 });
 
-bot.onText(/\/joke/, function (msg, match) {
-    var chatId = msg.chat.id;
-    var options = {
-        host: 'api.icndb.com',
-        path: '/jokes/random/1'
-    };
-
-    callback = function (response) {
-        var str = '';
-        response.on('data', function (chunk) {
-            str += chunk;
-        });
-
-        response.on('end', function () {
-            var parsed = JSON.parse(str);
-            bot.sendMessage(chatId, parsed.value[0].joke)
-        });
-    };
-    http.request(options, callback).end();
-
-});
-
 
 function nomieTick(trackerParams) {
     nomieRequest('/action=track/label=' + trackerParams)
