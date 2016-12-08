@@ -1,6 +1,6 @@
 var TelegramBot = require('node-telegram-bot-api')
 
-require('dotenv').config();
+// require('dotenv').config();
 var http = require('http');
 var https = require('https');
 var cron = require('node-cron')
@@ -35,28 +35,6 @@ bot.onText(/\/note (.+)/, function (msg, match) {
 bot.onText(/\/mood/, function (msg, match) {
     // console.log(msg)
     queryMood(msg.chat);
-});
-
-bot.onText(/\/joke/, function (msg, match) {
-    var chatId = msg.chat.id;
-    var options = {
-        host: 'api.icndb.com',
-        path: '/jokes/random/1'
-    };
-
-    callback = function (response) {
-        var str = '';
-        response.on('data', function (chunk) {
-            str += chunk;
-        });
-
-        response.on('end', function () {
-            var parsed = JSON.parse(str);
-            bot.sendMessage(chatId, parsed.value[0].joke)
-        });
-    };
-    http.request(options, callback).end();
-
 });
 
 
