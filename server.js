@@ -34,7 +34,7 @@ bot.onText(/\/note (.+)/, function (msg, match) {
 
 bot.onText(/\/mood/, function (msg, match) {
     // console.log(msg)
-    queryMood(msg.chat);
+    queryMood(msg.chat.id);
 });
 
 
@@ -85,13 +85,15 @@ var queryMood = function (id) {
 };
 
 bot.on('callback_query', function onCallbackQuery(callbackQuery) {
+    console.log(process.env.JULIUS);
 
 
     var tracker = callbackQuery.data.substr(0, 1);
     var value = callbackQuery.data.substr(1);
     console.log(tracker, value);
-
+    console.log(callbackQuery);
     var options = {
+
         chat_id: callbackQuery.message.chat.id,
         message_id: callbackQuery.message.message_id
     };
@@ -111,6 +113,6 @@ function askUserMood(id) {
     queryMood(id);
 };
 
-cron.schedule('0 0 22 * *', askUserMood(process.env.JULIUS));
+// cron.schedule('0 0 22 * *', askUserMood(process.env.JULIUS));
 cron.schedule('0 0 16 * *', askUserMood(process.env.JULIUS));
 
