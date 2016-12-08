@@ -1,6 +1,6 @@
 var TelegramBot = require('node-telegram-bot-api')
 
-require('dotenv').config();
+// require('dotenv').config();
 var http = require('http');
 var https = require('https');
 var cron = require('node-cron')
